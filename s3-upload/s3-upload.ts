@@ -9,6 +9,7 @@ const s3 = new AWS.S3({
 });
 
 exports.lambdaHandler = async () => await getUploadURL();
+exports.handler = async () => await getUploadURL();
 
 const getUploadURL = async () => {
   const actionId = uuidv4();
