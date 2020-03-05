@@ -2,7 +2,7 @@
   "name": "hello_world",
   "version": "1.0.0",
   "description": "hello world sample for NodeJS",
-  "main": "app.ts",
+  "main": "s3-upload.ts",
   "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
   "author": "SAM CLI",
   "license": "MIT",
@@ -12,7 +12,8 @@
     "uuid": "^7.0.2"
   },
   "scripts": {
-    "build": "tsc && sam build && sam local invoke"
+    "build": "tsc && sam build && sam local invoke",
+    "deploy": "tsc --p tsconfig.deploy.json"
   },
   "devDependencies": {
     "@types/node": "^13.7.7",

@@ -130,4 +130,5 @@ $RECYCLE.BIN/
 
 .aws-sam
 .idea
-s3-upload/app.js
+s3-upload/s3-upload.js
+functions-out
