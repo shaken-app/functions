@@ -7,7 +7,7 @@
     "s3upload:build": "sam build -s s3-upload -t s3-upload/template.yaml",
     "s3upload:compile": "tsc -p s3-upload",
     "s3upload:invoke": "sam local invoke -t s3-upload/template.yaml",
-    "deploy": "webpack --config webpack.pro.config.js",
+    "deploy": "tsc -p s3-upload",
     "execute": "npm run s3upload:compile && npm run s3upload:build && npm run s3upload:invoke"
   },
   "repository": {
