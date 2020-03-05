@@ -132,3 +132,4 @@ $RECYCLE.BIN/
 .idea
 s3-upload/s3-upload.js
 functions-out
+node_modules

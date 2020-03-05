@@ -8,17 +8,14 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.633.0",
-    "axios": "^0.18.0",
+    "typescript": "^3.8.3",
     "uuid": "^7.0.2"
-  },
-  "scripts": {
-    "build": "tsc && sam build && sam local invoke",
-    "deploy": "tsc --p tsconfig.deploy.json"
   },
   "devDependencies": {
     "@types/node": "^13.7.7",
     "@types/uuid": "^7.0.0",
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
   }
 }

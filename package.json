@@ -4,15 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "s3upload:build": "sam build -s s3-upload -t s3-upload/template.yaml",
+    "s3upload:compile": "tsc -p s3-upload",
+    "s3upload:invoke": "sam local invoke -t s3-upload/template.yaml",
+    "deploy": "webpack --config webpack.pro.config.js",
+    "execute": "npm run s3upload:compile && npm run s3upload:build && npm run s3upload:invoke"
   },
   "repository": {
-    "deploy": "npm run deploy --prefix s3-upload",
+    "url": "git+https://github.com/shaken-app/functions.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shaken-app/functions/issues"
   },
-  "homepage": "https://github.com/shaken-app/functions#readme"
+  "homepage": "https://github.com/shaken-app/functions#readme",
+  "devDependencies": {
+    "@types/node": "^13.7.7",
+    "@types/uuid": "^7.0.0",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.633.0",
+    "typescript": "^3.8.3",
+    "uuid": "^7.0.2"
+  }
 }
