@@ -7,7 +7,7 @@
     "s3upload:build": "sam build -s s3-upload -t s3-upload/template.yaml",
     "s3upload:compile": "tsc -p s3-upload",
     "s3upload:invoke": "sam local invoke -t s3-upload/template.yaml",
-    "deploy": "tsc -p s3-upload",
+    "deploy": "npm run s3upload:compile",
     "execute": "npm run s3upload:compile && npm run s3upload:build && npm run s3upload:invoke"
   },
   "repository": {
@@ -21,10 +21,7 @@
   "homepage": "https://github.com/shaken-app/functions#readme",
   "devDependencies": {
     "@types/node": "^13.7.7",
-    "@types/uuid": "^7.0.0",
-    "ts-loader": "^6.2.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "@types/uuid": "^7.0.0"
   },
   "dependencies": {
     "aws-sdk": "^2.633.0",

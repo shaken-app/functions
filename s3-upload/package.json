@@ -13,9 +13,6 @@
   },
   "devDependencies": {
     "@types/node": "^13.7.7",
-    "@types/uuid": "^7.0.0",
-    "ts-loader": "^6.2.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "@types/uuid": "^7.0.0"
   }
 }
