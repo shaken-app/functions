@@ -25,7 +25,9 @@ const getUploadURL = async () => {
       resolve({
         statusCode: 200,
         isBase64Encoded: false,
-        headers: { "Access-Control-Allow-Origin": "*" },
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
         body: JSON.stringify({
           uploadURL,
           photoFilename: `${actionId}.jpg`

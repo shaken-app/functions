@@ -6,7 +6,10 @@
   "scripts": {
     "s3upload:build": "sam build -s s3-upload -t s3-upload/template.yaml",
     "s3upload:compile": "tsc -p s3-upload",
+    "s3upload:deploy": "sam deploy --template-file tmp/packaged.yaml --stack-name s3-upload --capabilities CAPABILITY_IAM --profile s3-uploader --region us-east-1",
     "s3upload:invoke": "sam local invoke -t s3-upload/template.yaml",
+    "s3upload:package": "sam package --s3-bucket shaken-functions --output-template-file tmp/packaged.yaml --profile s3-uploader --region us-east-1",
+    "deploy:aws": "npm run s3upload:compile && npm run s3upload:build && npm run s3upload:package && npm run s3upload:deploy",
     "deploy": "npm run s3upload:compile",
     "execute": "npm run s3upload:compile && npm run s3upload:build && npm run s3upload:invoke"
   },
