@@ -8,15 +8,32 @@ const s3 = new AWS.S3({
   secretAccessKey: process.env.aws_secret
 });
 
-exports.lambdaHandler = async () => await getUploadURL();
-exports.handler = async () => await getUploadURL();
+interface NetlifyEvent {
+  path: string;
+  httpMethod: string;
+  headers: Headers;
+  queryStringParameters: { [arg: string]: any };
+  body: string;
+  isBase64Encoded: boolean;
+}
 
-const getUploadURL = async () => {
+exports.lambdaHandler = async () => await getUploadURL();
+exports.handler = async (event: NetlifyEvent) => await getUploadURL(event);
+
+const getUploadURL = async (event?: NetlifyEvent) => {
+  let contentType = {};
+  let ext = 'jpg';
+  const params = event?.queryStringParameters;
+  params?.type && (contentType = { contentType: params.type });
+  params?.ext && (ext = params?.ext);
+
   const actionId = uuidv4();
   const s3Params = {
     Bucket: "shaken-assets",
-    Key: `${actionId}.jpg`,
-    ACL: "public-read"
+    Key: `${actionId}.${ext}`,
+    Expires: 600000,
+    ACL: "public-read",
+    ...contentType
   };
 
   return new Promise((resolve, reject) => {
