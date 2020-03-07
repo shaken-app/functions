@@ -21,8 +21,10 @@ exports.lambdaHandler = async () => await getUploadURL();
 exports.handler = async (event: NetlifyEvent) => await getUploadURL(event);
 
 const getUploadURL = async (event?: NetlifyEvent) => {
+  if (event) return event;
   let contentType = {};
   let ext = 'jpg';
+  // @ts-ignore
   const params = event?.queryStringParameters;
   params?.type && (contentType = { contentType: params.type });
   params?.ext && (ext = params?.ext);
