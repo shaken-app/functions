@@ -25,7 +25,7 @@ const getUploadURL = async (event?: NetlifyEvent) => {
   let ext = 'jpg';
   // @ts-ignore
   const params = event?.queryStringParameters;
-  params?.type && (contentType = { 'Content-Type': params.type });
+  params?.type && (contentType = { 'ContentType': params.type });
   params?.ext && (ext = params?.ext);
 
   const actionId = uuidv4();
