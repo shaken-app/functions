@@ -21,7 +21,6 @@ exports.lambdaHandler = async () => await getUploadURL();
 exports.handler = async (event: NetlifyEvent) => await getUploadURL(event);
 
 const getUploadURL = async (event?: NetlifyEvent) => {
-  if (event) return event;
   let contentType = {};
   let ext = 'jpg';
   // @ts-ignore
@@ -49,7 +48,8 @@ const getUploadURL = async (event?: NetlifyEvent) => {
         },
         body: JSON.stringify({
           uploadURL,
-          photoFilename: `${actionId}.jpg`
+          photoFilename: `${actionId}.jpg`,
+          event
         })
       });
     } else {
